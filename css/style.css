@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Saira:wght@400;700&display=swap");
 
+:root {
+  --nonShadowedColor: #f47b56;
+  --shadowedColor: #df5c34;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -141,6 +146,7 @@ details {
   transform: translateZ(-500px) rotateX(-30deg) rotateY(-45deg);
   transform-style: preserve-3d;
   transition: transform 1s;
+  animation: cubeRotation 4s ease infinite;
 }
 
 #cube figure {
@@ -159,18 +165,22 @@ details {
 
 #cube .front {
   transform: rotateX(0) translateZ(var(--transZ));
+  animation: front 4s ease infinite;
 }
 
 #cube .back {
   transform: rotateX(180deg) translateZ(var(--transZ));
+  animation: back 4s ease infinite;
 }
 
 #cube .right {
   transform: rotateY(90deg) translateZ(var(--transZ));
+  animation: righta 4s ease infinite;
 }
 
 #cube .left {
   transform: rotateY(-90deg) translateZ(var(--transZ));
+  animation: lefta 4s ease infinite;
 }
 
 #cube .top {
@@ -197,6 +207,79 @@ details {
 
 .shadowed {
   background-color: #df5c34 !important;
+}
+
+/* KeyFrames */
+
+@keyframes cubeRotation {
+  25% {
+    transform: translateZ(-500px) rotateX(-30deg) rotateY(-135deg);
+  }
+  50% {
+    transform: translateZ(-500px) rotateX(-30deg) rotateY(-225deg);
+  }
+  75% {
+    transform: translateZ(-500px) rotateX(-30deg) rotateY(-315deg);
+  }
+
+  100% {
+    transform: translateZ(-500px) rotateX(-30deg) rotateY(-405deg);
+  }
+}
+
+@keyframes righta {
+  0% {
+    background-color: var(--shadowedColor);
+  }
+
+  25% {
+    background-color: var(--nonShadowedColor);
+  }
+
+  75% {
+    background-color: var(--nonShadowedColor);
+  }
+  100% {
+    background-color: var(--shadowedColor);
+  }
+}
+
+@keyframes back {
+  0% {
+    background-color: var(--nonShadowedColor);
+  }
+
+  25% {
+    background-color: var(--shadowedColor);
+  }
+
+  50% {
+    background-color: var(--nonShadowedColor);
+  }
+}
+
+@keyframes lefta {
+  25% {
+    background-color: var(--nonShadowedColor);
+  }
+
+  50% {
+    background-color: var(--shadowedColor);
+  }
+
+  75% {
+    background-color: var(--nonShadowedColor);
+  }
+}
+
+@keyframes front {
+  50% {
+    background-color: var(--nonShadowedColor);
+  }
+
+  75% {
+    background-color: var(--shadowedColor);
+  }
 }
 
 /* ================
